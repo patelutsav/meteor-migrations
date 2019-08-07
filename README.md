@@ -154,13 +154,13 @@ You can also run migrations from the command line using the included shell scrip
 For instance, from your project's root, run:
 
 ``` sh
-$ ./packages/percolatestudio-migrations/migrate.sh latest
+$ ./packages/meteor-migrations/migrate.sh latest
 ```
 
 You can also specify additional arguments to be passed into meteor, like:
 
 ``` sh
-$ ./packages/percolatestudio-migrations/migrate.sh latest --settings ./setting.json
+$ ./packages/meteor-migrations/migrate.sh latest --settings ./setting.json
 ```
 
 ### Errors
