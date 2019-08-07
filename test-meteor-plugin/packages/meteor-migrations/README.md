@@ -1,4 +1,4 @@
-# percolate:migrations
+# patelutsav:meteor-migrations
 
 A simple migration system for [Meteor](http://meteor.com) supporting string version migrations and command line usage.
 
