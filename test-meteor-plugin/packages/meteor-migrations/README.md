@@ -195,7 +195,7 @@ Alternatively you can unlock the collection from either server code or the meteo
 
 4. Open http://localhost:3000/ in your browser to see the test results.
 
-## Special Thanks
-To: **Zoltan Olah**
 
-Forked from [https://github.com/percolatestudio/meteor-migrations/](https://github.com/percolatestudio/meteor-migrations/)
+## License
+
+MIT., maintained by Utsav Patel.
