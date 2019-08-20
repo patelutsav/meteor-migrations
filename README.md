@@ -17,6 +17,7 @@ Meteor Migrations can be installed through Meteor's package manager. Type:
 To write a simple migration, somewhere in the server section of your project define:
 
 ``` javascript
+    import {Migrations} from 'meteor/patelutsav:meteor-migrations';
     Migrations.add({
         version: '1.0.0_1',
         name: 'Migration Script 1.0.0_1',
@@ -181,6 +182,17 @@ Alternatively you can unlock the collection from either server code or the meteo
 
 ```
     Migrations.unlock();
+```
+
+### Migrating from other migration package
+If you are migrating from other migration package and wish to skip few of the script from running use following:
+```javascript
+    // Adds '2.2.0_1' and '2.2.0_2' to database without running.
+    ['2.2.0_1', '2.2.0_2'].forEach(version => {
+        Migrations.addMigrationWithoutRunning(version);
+    });
+    // Runs migration scripts after '2.2.0_2'.
+    Migrations.migrateTo('latest');
 ```
 
 ## Contributing

@@ -3,6 +3,9 @@ import {Mongo} from 'meteor/mongo';
 import {Migrations} from 'meteor/patelutsav:meteor-migrations';
 
 Meteor.startup(() => {
+    ['2.2.0_1', '2.2.0_2'].forEach(version => {
+        Migrations.addMigrationWithoutRunning(version);
+    });
     Migrations.migrateTo('latest');
 });
 
