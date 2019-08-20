@@ -140,30 +140,6 @@ export const Migrations = {
     Object.freeze(migration);
 
     this._list.push(migration);
-    this._list.sort((a, b) => {
-      const aVersion = a.version.split('_');
-      const aFixVersion = aVersion[0].split('.');
-      const aScriptVersion = aVersion[1];
-      const aMajor = aFixVersion[0];
-      const aMinor = aFixVersion[1];
-      const aUpdate = aFixVersion[2];
-      const bVersion = b.version.split('_');
-      const bFixVersion = bVersion[0].split('.');
-      const bScriptVersion = bVersion[1];
-      const bMajor = bFixVersion[0];
-      const bMinor = bFixVersion[1];
-      const bUpdate = bFixVersion[2];
-      if ((aMajor - bMajor) > 0) {
-        return 1;
-      } else if ((aMinor - bMinor) > 0) {
-        return 1;
-      } else if ((aUpdate - bUpdate) > 0) {
-        return 1;
-      } else if ((aScriptVersion - bScriptVersion) > 0) {
-        return 1;
-      }
-      return -1;
-    });
   },
   migrateTo: function (command) {
     if (this._getControl().locked) {
@@ -179,6 +155,13 @@ export const Migrations = {
     }
 
     this.lock();
+
+    this._list = this._list
+      .map(m => m.version)
+      .map( a => a.replace(/\d+/g, n => +n+100000 ) )
+      .sort()
+      .map( a => a.replace(/\d+/g, n => +n-100000 ) )
+      .map(version => this._list.find(m => m.version === version));
 
     let versionsToExecute = [];
     let rerun = false;
