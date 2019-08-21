@@ -158,9 +158,9 @@ export const Migrations = {
 
     this._list = this._list
       .map(m => m.version)
-      .map( a => a.replace(/\d+/g, n => +n+100000 ) )
+      .map(a => a.replace(/\d+/g, n => +n + 100000))
       .sort()
-      .map( a => a.replace(/\d+/g, n => +n-100000 ) )
+      .map(a => a.replace(/\d+/g, n => +n - 100000))
       .map(version => this._list.find(m => m.version === version));
 
     let versionsToExecute = [];
@@ -230,7 +230,7 @@ export const Migrations = {
       }
     }
   },
-  addMigrationWithoutRunning: function (version) {
+  saveMigrationWithoutRunning: function (version) {
     this.lock();
     if (!isFormatedVersion(version)) {
       throw new Error('Supplied version: ' + version + '. Parameter must supply a version number as string (eg. 0.0.0_0).');
@@ -238,12 +238,9 @@ export const Migrations = {
     if (this._findIndexByVersion(version) === -1) {
       throw new Error('Supplied version: ' + version + ' does not exist.');
     }
-    const addedMigrations = this.getExecutedVersions();
-    if (!addedMigrations.includes(version)) {
-      this._insertSuccessfullyRanMigration(this._list.find(migration => migration.version === version));
-      this._setControl({version, locked: false});
-      console.log('Successfully added Migration version: ' + version + ' to database.');
-    }
+    this._insertSuccessfullyRanMigration(this._list.find(migration => migration.version === version));
+    this._setControl({version, locked: false});
+    console.log('Successfully saved Migration version: ' + version + ' to database.');
     this.unlock();
   },
 };

@@ -189,7 +189,7 @@ If you are migrating from other migration package and wish to skip few of the sc
 ```javascript
     // Adds '2.2.0_1' and '2.2.0_2' to database without running.
     ['2.2.0_1', '2.2.0_2'].forEach(version => {
-        Migrations.addMigrationWithoutRunning(version);
+        Migrations.saveMigrationWithoutRunning(version);
     });
     // Runs migration scripts after '2.2.0_2'.
     Migrations.migrateTo('latest');
