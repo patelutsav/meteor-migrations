@@ -186,6 +186,7 @@ export const Migrations = {
     }
 
     this._migrateTo(versionsToExecute, rerun);
+    log.info('Finished migrating.');
     this.unlock();
   },
   _migrateTo: function (versions, rerun = false) {

@@ -74,6 +74,6 @@ templating-tools@1.1.2
 tracker@1.2.0
 ui@1.0.13
 underscore@1.0.10
-patelutsav:meteor-migrations@0.0.4
+patelutsav:meteor-migrations@0.0.5
 webapp@1.7.4
 webapp-hashing@1.0.9

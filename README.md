@@ -211,3 +211,6 @@ If you are migrating from other migration package and wish to skip few of the sc
 To: **Zoltan Olah**
 
 Forked from [https://github.com/percolatestudio/meteor-migrations/](https://github.com/percolatestudio/meteor-migrations/)
+
+## License
+MIT License
