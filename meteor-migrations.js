@@ -55,17 +55,17 @@ export const Migrations = {
   },
   _checkIfOldVersionScriptUpdated: function () {
     let check = false;
-    const list = []
+    const list = [];
     const oldMigrations = this._listCollection.find({}).fetch();
     oldMigrations.forEach((migration) => {
       const {run, _id} = migration;
       const matchingMigration = this._list.find(item => item.version === _id);
       if (!matchingMigration) {
         check = true;
-        list.push(matchingMigration.version);
+        list.push(_id);
       } else if (run !== md5(matchingMigration.run.toString())) {
         check = true;
-        list.push(matchingMigration.version);
+        list.push(_id);
       }
     });
     return {check, list};

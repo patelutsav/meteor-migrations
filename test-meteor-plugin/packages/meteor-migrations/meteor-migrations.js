@@ -62,10 +62,10 @@ export const Migrations = {
       const matchingMigration = this._list.find(item => item.version === _id);
       if (!matchingMigration) {
         check = true;
-        list.push(matchingMigration.version);
+        list.push(_id);
       } else if (run !== md5(matchingMigration.run.toString())) {
         check = true;
-        list.push(matchingMigration.version);
+        list.push(_id);
       }
     });
     return {check, list};
